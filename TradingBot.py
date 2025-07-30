@@ -66,5 +66,26 @@ class TradingBot:
         if RSI > 70 and self.position > 0:
             self.sell(price)
         '''
+    
+    def bollinger_bands_strategy(self, data):
+        prices = pd.DataFrame(data, columns=["Price"])
 
+        # calculating 20 day moving average and standard deviation
+        prices["MA20"] = prices["Price"].rolling(window=20).mean()
+        prices["STD20"] = prices["Price"].rolling(window=20).std()
+
+        # calculating Bollinger Bands
+        prices["UpperBand"] = prices["MA20"] + (2 * prices["STD20"])
+        prices["LowerBand"] = prices["MA20"] - (2 * prices["STD20"])
+ 
+        # The Trading logic
+        for i in range(20, len(prices)):
+            price = prices["Price"].iloc[i]
+            upper = prices["UpperBand"].iloc[i]
+            lower = prices["LowerBand"].iloc[i]
+
+            if price < lower:
+                self.buy(price)
+            elif price > upper and self.position > 0:
+                self.sell(price)
     
