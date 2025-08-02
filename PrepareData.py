@@ -11,14 +11,20 @@ def load_data(filename, stock_name):
     # Filter rows for the given stock (Name column)
     stock_df = df[df["Name"] == stock_name].copy()
 
+    # Sorts the dates in ascending order
+    stock_df["Date"] = pd.to_datetime(stock_df["Date"])
+    stock_df = stock_df.sort_values(by="Date")
+
     # Prepares data as list of [Date, Price] pairs
     data = stock_df.loc[:, ["Date", "Close"]].copy()
     data.columns = ["Date", "Price"]
+    df = df.sort_values(by="Date")
     
     # Converts to lists for passing into TradingBot algorithms
     data_list = data.values.tolist()
     
     return data_list, stock_df
+
 
 # Plots the trades using matplotlib
 def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test):
@@ -70,4 +76,3 @@ def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test):
     plt.suptitle(f"Bot's Trading Data for '{display_name.upper()}'", fontsize=16)
     plt.tight_layout(rect=[0, 0, 1, 0.96])
     plt.show()
-
