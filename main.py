@@ -16,7 +16,7 @@ def main():
     while True:
         
         # Asks for input of Stock/ETF ticker symbol to test
-        ticker_symbol = input("Enter the ticker symbol of the stock or ETF you want to test (e.g. aapl for Apple). To exit, type 'exit': \n").strip().lower()
+        ticker_symbol = input("Enter the ticker symbol of any US stock or ETF you want to test (e.g. aapl for Apple). To exit, type 'exit': \n").strip().lower()
 
         # Exits program if user types 'exit'
         if ticker_symbol == "exit":
