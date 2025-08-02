@@ -1,0 +1,103 @@
+
+from TradingBot import TradingBot
+from PrepareData import load_data, plot_trades
+
+def main():
+    filename = "huge_stock_market_dataset.csv"
+
+    print("Welcome to TradingBot Simulator!\n")
+    print("You will choose a US stock or ETF and a TradingBot will buy or sell that stock/ETF using historical market data (From 1983 to 2019).\n")
+    print("The bot will do this process 3 times using 3 different algorithms, and output the final profits and total trades it has made: ")
+    print(" - Moving Average Crossover Strategy")
+    print(" - RSI Strategy Trades")
+    print(" - Bollinger Bands Strategy Trades\n")
+    print("The TradingBot will then determine which algorithm generates the most profit and then visualize the buying/selling data of each algorithm.\n")
+    
+    while True:
+        
+        # Asks for input of Stock/ETF ticker symbol to test
+        ticker_symbol = input("Enter the ticker symbol of the stock or ETF you want to test (e.g. aapl for Apple). To exit, type 'exit': \n").strip().lower()
+
+        # Exits program if user types 'exit'
+        if ticker_symbol == "exit":
+            print("Exiting program.")
+            break
+
+        stock_to_test = ticker_symbol
+
+        # Adds '.us' to match name in file
+        if not stock_to_test.endswith('.us'):
+            stock_to_test += '.us'
+
+        print(f"\nChecking if '{ticker_symbol}' is a valid stock/ETF...\n")
+
+        # Load prices for the selected stock/ETF
+        prices, stock_df = load_data(filename, stock_to_test)
+
+        # Checks if stock/ETF is valid
+        if stock_df.empty:
+            print(f"No data found for ticker '{ticker_symbol}'. Please try again.\n")
+            continue
+
+        print(f"Stock/ETF found! You selected: {ticker_symbol}\n")
+        
+        # Asks user to input a starting balance (must be positive)
+        while True:
+            try:
+                starting_balance = float(input("Enter your starting balance (must be a positive number): "))
+                if starting_balance > 0:
+                    break
+                else:
+                    print("Balance must be greater than 0. Try again.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+        
+        print(f"\nStarting Balance: '${starting_balance}'\n")
+
+        # Runs the TradingBot Simulator
+        print("\nExecuting TradingBot Simulator...\n")
+
+        print("\n===========Results===========\n")
+        
+        # Create separate bots for each algorithms
+        bot_ma = TradingBot(starting_balance)
+        bot_rsi = TradingBot(starting_balance)
+        bot_bb = TradingBot(starting_balance)
+        
+        # Runs each TradingBot algorithm
+        bot_ma.moving_average_crossover(prices)
+        bot_rsi.rsi_strategy(prices)
+        bot_bb.bollinger_bands_strategy(prices)
+        
+        # Print summary for each bot
+        print("Moving Average Crossover Strategy")
+        print(f"Final Balance: ${bot_ma.current_balance:.2f}")
+        print(f"Total Trades: {bot_ma.total_trades}\n")
+        
+        print("RSI Strategy")
+        print(f"Final Balance: ${bot_rsi.current_balance:.2f}")
+        print(f"Total Trades: {bot_rsi.total_trades}\n")
+        
+        print("Bollinger Bands Strategy")
+        print(f"Final Balance: ${bot_bb.current_balance:.2f}")
+        print(f"Total Trades: {bot_bb.total_trades}\n")
+
+        print("=============================\n")
+        
+        # Calculates which algorithm has the highest ending balance
+        balances = {
+            "Moving Average Crossover": bot_ma.current_balance,
+            "RSI": bot_rsi.current_balance,
+            "Bollinger Bands": bot_bb.current_balance
+        }
+
+        best_algorithm = max(balances, key=balances.get)
+        print(f"\nBest Strategy: {best_algorithm} with a final balance of ${balances[best_algorithm]:.2f}")
+
+        # Plots the trades that each algorithm made
+        print("\nThe visualization of the data will be shown: Exit the plot to continue.\n\n")
+        plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test)
+
+
+if __name__ == "__main__":
+    main()
