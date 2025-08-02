@@ -8,31 +8,34 @@ class TradingBot:
         self.total_trades = 0
         self.trade_history = []
         
-    def buy(self, price):
+    def buy(self, price, date=None):
           if self.position == 0:
             self.position = self.current_balance / price
             self.current_balance -= self.position * price
             self.total_trades += 1
-            self.trade_history.append({"Buy": price})
+            self.trade_history.append({"type": "Buy", "price": price, "date": date})
             
-    def sell(self, price):
+    def sell(self, price, date=None):
          if self.position > 0:
             self.current_balance += self.position * price
             self.position = 0
             self.total_trades += 1
-            self.trade_history.append({"Sell": price})
+            self.trade_history.append({"type": "Sell", "price": price, "date": date})
 
     def moving_average_crossover(self, data):
-        prices = pd.DataFrame(data, columns=["Price"])
+        prices = pd.DataFrame(data, columns=["Date", "Price"])
 
         prices["moving_average_20"] = prices["Price"].rolling(window=20).mean()
         prices["moving_average_50"] = prices["Price"].rolling(window=50).mean()
 
         for i in range(50, len(prices)):
             if prices["moving_average_20"].iloc[i] > prices["moving_average_50"].iloc[i]:
-                self.buy(prices["Price"].iloc[i])
-            elif prices["moving_average_50"].iloc[i] < prices["moving_average_50"].iloc[i]:
-                self.sell(prices["Price"].iloc[i])
+                self.buy(prices["Price"].iloc[i], prices["Date"].iloc[i])
+            elif prices["moving_average_20"].iloc[i] < prices["moving_average_50"].iloc[i]:
+                self.sell(prices["Price"].iloc[i], prices["Date"].iloc[i])
+
+        if self.position > 0:
+            self.sell(prices["Price"].iloc[-1], prices["Date"].iloc[-1])
 
         '''
         if moving_average_20 > moving_average_50:
@@ -42,7 +45,7 @@ class TradingBot:
         '''
 
     def rsi_strategy(self, data):
-        prices = pd.DataFrame(data, columns=["Price"])
+        prices = pd.DataFrame(data, columns=["Date", "Price"])
 
         prices["Change"] = prices["Price"].diff()
         prices["Gains"] = prices["Change"].where(prices["Change"] > 0, 0)
@@ -55,9 +58,12 @@ class TradingBot:
 
         for i in range(14, len(prices)):
             if prices["RSI"].iloc[i] < 30:
-                self.buy(prices["Price"].iloc[i])
+                self.buy(prices["Price"].iloc[i], prices["Date"].iloc[i])
             elif prices["RSI"].iloc[i] > 70 and self.position > 0:
-                self.sell(prices["Price"].iloc[i])
+                self.sell(prices["Price"].iloc[i], prices["Date"].iloc[i])
+        
+        if self.position > 0:
+            self.sell(prices["Price"].iloc[-1], prices["Date"].iloc[-1])
 
         '''
         if RSI < 30:
@@ -68,7 +74,7 @@ class TradingBot:
         '''
     
     def bollinger_bands_strategy(self, data):
-        prices = pd.DataFrame(data, columns=["Price"])
+        prices = pd.DataFrame(data, columns=["Date", "Price"])
 
         # calculating 20 day moving average and standard deviation
         prices["MA20"] = prices["Price"].rolling(window=20).mean()
@@ -81,11 +87,15 @@ class TradingBot:
         # The Trading logic
         for i in range(20, len(prices)):
             price = prices["Price"].iloc[i]
+            date = prices["Date"].iloc[i]
             upper = prices["UpperBand"].iloc[i]
             lower = prices["LowerBand"].iloc[i]
 
             if price < lower:
-                self.buy(price)
+                self.buy(price, date)
             elif price > upper and self.position > 0:
-                self.sell(price)
+                self.sell(price, date)
+
+        if self.position > 0:
+            self.sell(prices["Price"].iloc[-1], prices["Date"].iloc[-1])
     
