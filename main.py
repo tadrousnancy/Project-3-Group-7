@@ -29,7 +29,7 @@ def main():
         if not stock_to_test.endswith('.us'):
             stock_to_test += '.us'
 
-        print(f"\nChecking if '{ticker_symbol}' is a valid stock/ETF...\n")
+        print(f"\nChecking if '{ticker_symbol}' is a valid stock/ETF. This may take a little time...\n")
 
         # Load prices for the selected stock/ETF
         prices, stock_df = load_data(filename, stock_to_test)
