@@ -38,7 +38,7 @@ def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test, starting_balan
     # Finds the algorithm with the highest balance and saves it
     balances = {
             "Moving Average Crossover": bot_ma.current_balance,
-            "RSI": bot_rsi.current_balance,
+            "Relative Strength Index": bot_rsi.current_balance,
             "Bollinger Bands": bot_bb.current_balance
         }
     
@@ -49,7 +49,7 @@ def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test, starting_balan
 
     strategies = [
         (r"$\bf{Moving\ Average\ Crossover}$" + f"\nFinal Balance: ${bot_ma.current_balance:,.2f}\nTotal Trades: {bot_ma.total_trades}", bot_ma),
-        (r"$\bf{RSI\ Strategy}$" + f"\nFinal Balance: ${bot_rsi.current_balance:,.2f}\nTotal Trades: {bot_rsi.total_trades}", bot_rsi),
+        (r"$\bf{Relative\ Strength\ Index\ (RSI)}$" + f"\nFinal Balance: ${bot_rsi.current_balance:,.2f}\nTotal Trades: {bot_rsi.total_trades}", bot_rsi),
         (r"$\bf{Bollinger\ Bands}$" + f"\nFinal Balance: ${bot_bb.current_balance:,.2f}\nTotal Trades: {bot_bb.total_trades}", bot_bb)
     ]
 
@@ -93,7 +93,7 @@ def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test, starting_balan
 
 
     # Adds best algorithm at the bottom
-    plt.figtext(0.5, 0.02, f"Best Strategy: {best_algorithm} with a Final Balance of ${balances[best_algorithm]:,.2f}", 
+    plt.figtext(0.5, 0.02, f"Best Algorithm: {best_algorithm} with a Final Balance of ${balances[best_algorithm]:,.2f}", 
     wrap = True, ha = 'center', fontsize=15, fontweight = 'bold')
 
     # Final formatting of plot
