@@ -24,7 +24,7 @@ def main():
 
         # Exits program if user types 'exit'
         if ticker_symbol == "exit":
-            print("\nThank you for trying our TradingBot program. See you next time!\n(Exiting program)")
+            print("\nThank you for trying our TradingBot program. See you next time!\n\n(Exiting program)")
             break
 
         stock_to_test = ticker_symbol
