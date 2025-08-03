@@ -5,19 +5,19 @@ Welcome to the **Trading Bot Simulator**. This is a python project which allows 
 ## Features
  
 - Test any U.S. stock or ETF using its ticker symbol (e.g. aapl for Apple)
-- Simulate and compare three trading strategies:
-     1. **Moving Average Crossover**
-     2. **RSI Strategy**
-     3. **Bollinger Bands Strategy**
+- Simulate and compare three trading algorithms:
+     1. **Moving Average Crossover Algorithm**
+     2. **Relative Strength Index (RSI) Algorithm**
+     3. **Bollinger Bands Algorithm**
 - Visualize buy/sell points on a historical price chart
 - See final balances and trade counts for each algorithm
-- Automatically identifies the most profitable strategy 
+- Automatically identifies the most profitable algorithm 
 
 
 ## Project Structure 
 
 - main.py: runs the user interface and simulator 
-- TradingBot.py: contains TradingBot class and strategy algorithms
+- TradingBot.py: contains TradingBot class and algorithms
 - PrepareData.py: handles data loading and plotting
 - historical_market_dataset folder: dataset 
 - README.md 
@@ -31,7 +31,7 @@ Once everything is set up, you can run main.py.
 
 1. Enter a stock/ETF ticker. There are links included to find tickers. 
 2. Input your starting balance
-3. View results of all three strategies.
+3. View results of all three algorithms.
 4. Find which one performed best. 
 5. A graph will pop up showing buy/sell actions for each algorithm.
 
