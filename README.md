@@ -19,24 +19,13 @@ Welcome to the **Trading Bot Simulator**. This is a python project which allows 
 - main.py: runs the user interface and simulator 
 - TradingBot.py: contains TradingBot class and strategy algorithms
 - PrepareData.py: handles data loading and plotting
-- huge_stock_market_dataset.csv: required dataset (see Dataset Setup below)
+- huge_stock_market_dataset.csv: dataset 
 - README.md 
 
 
 ## Dataset Setup
 
 For this project you’ll need pandas and matplotlib. 
-
-The Trading Bot uses a large historical stock market dataset (huge_stock_market_dataset.csv) that cannot be uploaded to GitHub due to file size limits.
-
-###  Download the CSV file:
-
-Please download it from the following link:
-https://drive.google.com/file/d/1TCs-vnBpsizkk__0lbY7XL741PRwBjyX/view?usp=sharing
-
-###  Place the File Here:
-
-After downloading, move the file into the root directory of the project.
 
 Once everything is set up, you can run main.py. 
 
