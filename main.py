@@ -7,9 +7,9 @@ def main():
     print("Welcome to TradingBot Simulator!\n")
     print("You are able to choose any US stock or ETF and the TradingBot will buy or sell that stock/ETF using the historical market dataset (From 1983 to 2019).\n")
     print("The bot will complete the simulation process 3 times using 3 different algorithms:")
-    print(" - Moving Average Crossover Strategy")
-    print(" - RSI Strategy Trades")
-    print(" - Bollinger Bands Strategy Trades")
+    print(" - Moving Average Crossover Algorithm")
+    print(" - Relative Strength Index (RSI) Algorithm")
+    print(" - Bollinger Bands Algorithm")
     print("and output the final profits and total trades it has made.\n") 
     print("The TradingBot will then determine which algorithm generates the most profit and then visualize the buying/selling data of each algorithm.\n")
     print("==============================================================================\n")
@@ -39,6 +39,7 @@ def main():
 
         # Checks if stock/ETF is valid
         if stock_df.empty:
+            print("==============================================================================\n")
             print(f"No data found for ticker '{ticker_symbol.upper()}'. Please try again.\n")
             print("==============================================================================\n")
             continue
@@ -105,5 +106,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
