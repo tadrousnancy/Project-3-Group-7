@@ -89,7 +89,7 @@ def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test, starting_balan
     # Sets x-axis lable
     axes[-1].set_xlabel("Date")
     display_name = stock_to_test.replace('.us', '')
-    plt.suptitle(f"Bot's Trading Data for '{display_name.upper()}' with Initial Balance of ${starting_balance:,.2f}", fontsize = 16, fontweight = 'bold')
+    plt.suptitle(f"TradingBot's Trading Data for '{display_name.upper()}' with Initial Balance of ${starting_balance:,.2f}", fontsize = 16, fontweight = 'bold')
 
 
     # Adds best algorithm at the bottom
