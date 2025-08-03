@@ -4,7 +4,7 @@ Welcome to the **Trading Bot Simulator**. This is a python project which allows 
 
 ## Features
  
-- Test any U.S. stock or ETF using its ticker symbol (e.g. aapl for Apple)
+- Test any U.S. stock or ETF using its ticker symbol (e.g. aapl or AAPL for Apple)
 - Simulate and compare three trading algorithms:
      1. **Moving Average Crossover Algorithm**
      2. **Relative Strength Index (RSI) Algorithm**
