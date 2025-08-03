@@ -1,6 +1,6 @@
 # Trading Bot Simulator: Compare 3 Trading Algorithms
 
-Welcome to the **Trading Bot Simulator**. This is a python project which allows the user to simulate trades using historical stock market data. The user is able to test **any U.S. stock or ETF** and then compare the performance of three trading algorithms. 
+Welcome to the **Trading Bot Simulator**. This is a python project which allows the user to simulate trades using historical stock market data. The user is able to test **any U.S. stock or Exchange-Traded Fund (ETF)** and then compare the performance of three trading algorithms. 
 
 ## Features
  
