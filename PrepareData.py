@@ -48,9 +48,9 @@ def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test, starting_balan
     fig, axes = plt.subplots(3, 1, figsize=(16, 12), sharex=True)
 
     strategies = [
-        (f"Moving Average Crossover\nFinal Balance: ${bot_ma.current_balance:,.2f}\nTotal Trades: {bot_ma.total_trades}", bot_ma),
-        (f"RSI Strategy\nFinal Balance: ${bot_rsi.current_balance:,.2f}\nTotal Trades: {bot_rsi.total_trades}", bot_rsi),
-        (f"Bollinger Bands\nFinal Balance: ${bot_bb.current_balance:,.2f}\nTotal Trades: {bot_bb.total_trades}", bot_bb)
+        (r"$\bf{Moving\ Average\ Crossover}$" + f"\nFinal Balance: ${bot_ma.current_balance:,.2f}\nTotal Trades: {bot_ma.total_trades}", bot_ma),
+        (r"$\bf{RSI\ Strategy}$" + f"\nFinal Balance: ${bot_rsi.current_balance:,.2f}\nTotal Trades: {bot_rsi.total_trades}", bot_rsi),
+        (r"$\bf{Bollinger\ Bands}$" + f"\nFinal Balance: ${bot_bb.current_balance:,.2f}\nTotal Trades: {bot_bb.total_trades}", bot_bb)
     ]
 
     for ax, (title, bot) in zip(axes, strategies):
@@ -89,7 +89,7 @@ def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test, starting_balan
     # Sets x-axis lable
     axes[-1].set_xlabel("Date")
     display_name = stock_to_test.replace('.us', '')
-    plt.suptitle(f"Bot's Trading Data for '{display_name.upper()}' with Initial Balance of ${starting_balance:,.2f}:", fontsize = 16)
+    plt.suptitle(f"Bot's Trading Data for '{display_name.upper()}' with Initial Balance of ${starting_balance:,.2f}", fontsize = 16, fontweight = 'bold')
 
 
     # Adds best algorithm at the bottom
