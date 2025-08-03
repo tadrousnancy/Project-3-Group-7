@@ -34,7 +34,5 @@ Once everything is set up, you can run main.py.
 1. Enter a stock/ETF ticker. There are links included to find tickers. 
 2. Input your starting balance
 3. View results of all three algorithms.
-4. Find which one performed best. 
-5. A graph will pop up showing buy/sell actions for each algorithm.
-
-
+4. The program will determine which algorithm performed best. 
+5. A graph will pop up showing buy/sell actions for each algorithm, along with their final balance and state the best performing algorithm.
