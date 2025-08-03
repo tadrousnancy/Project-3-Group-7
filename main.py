@@ -58,8 +58,6 @@ def main():
 
         # Runs the TradingBot Simulator
         print("\nExecuting TradingBot Simulator...\n")
-
-        print("\n===========Results===========\n")
         
         # Create separate bots for each algorithms
         bot_ma = TradingBot(starting_balance)
@@ -72,6 +70,7 @@ def main():
         bot_bb.bollinger_bands_strategy(prices)
         
         # Print summary for each bot
+        print("\n===========Results===========\n")
         print("Moving Average Crossover Strategy")
         print(f"Final Balance: ${bot_ma.current_balance:.2f}")
         print(f"Total Trades: {bot_ma.total_trades}\n")
