@@ -3,11 +3,10 @@ from TradingBot import TradingBot
 from PrepareData import load_data, plot_trades
 
 def main():
-    filename = "huge_stock_market_dataset.csv"
 
     print("Welcome to TradingBot Simulator!\n")
-    print("You will choose a US stock or ETF and a TradingBot will buy or sell that stock/ETF using historical market data (From 1983 to 2019).\n")
-    print("The bot will do this process 3 times using 3 different algorithms, and output the final profits and total trades it has made: ")
+    print("You are able to choose any US stock or ETF and the TradingBot will buy or sell that stock/ETF using the historical market dataset (From 1983 to 2019).\n")
+    print("The bot will complete the simulation process 3 times using 3 different algorithms, and output the final profits and total trades it has made: ")
     print(" - Moving Average Crossover Strategy")
     print(" - RSI Strategy Trades")
     print(" - Bollinger Bands Strategy Trades\n")
@@ -22,7 +21,7 @@ def main():
 
         # Exits program if user types 'exit'
         if ticker_symbol == "exit":
-            print("Exiting program.")
+            print("\nThank you for trying our TradingBot program. See you next time!\n(Exiting program)")
             break
 
         stock_to_test = ticker_symbol
@@ -31,14 +30,15 @@ def main():
         if not stock_to_test.endswith('.us'):
             stock_to_test += '.us'
 
-        print(f"\nChecking if '{ticker_symbol}' is a valid stock/ETF. This may take a little time...\n")
+        print(f"\nChecking if '{ticker_symbol}' is a valid stock/ETF.\n")
 
         # Load prices for the selected stock/ETF
-        prices, stock_df = load_data(filename, stock_to_test)
+        prices, stock_df = load_data(stock_to_test)
 
         # Checks if stock/ETF is valid
         if stock_df.empty:
             print(f"No data found for ticker '{ticker_symbol}'. Please try again.\n")
+            print("=========================================================================\n")
             continue
 
         print(f"Stock/ETF found! You selected: {ticker_symbol}\n")
@@ -54,7 +54,7 @@ def main():
             except ValueError:
                 print("Invalid input. Please enter a number.")
         
-        print(f"\nStarting Balance: '${starting_balance}'\n")
+        print(f"\nStarting Balance: ${starting_balance}\n")
 
         # Runs the TradingBot Simulator
         print("\nExecuting TradingBot Simulator...\n")
@@ -97,8 +97,9 @@ def main():
         print(f"\nBest Strategy: {best_algorithm} with a final balance of ${balances[best_algorithm]:.2f}")
 
         # Plots the trades that each algorithm made
-        print("\nThe visualization of the data will be shown: Exit the plot to continue.\n\n")
-        plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test)
+        print("\nThe visualization of the data will be shown: Exit the plot to continue.\n")
+        print("=========================================================================\n")
+        plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test, starting_balance)
 
 
 if __name__ == "__main__":
