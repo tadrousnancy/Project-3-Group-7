@@ -1,4 +1,3 @@
-
 from TradingBot import TradingBot
 from PrepareData import load_data, plot_trades
 
@@ -106,3 +105,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
