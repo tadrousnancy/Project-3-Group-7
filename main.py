@@ -5,7 +5,7 @@ def main():
 
     print("\n==============================================================================\n")
     print("Welcome to TradingBot Simulator!\n")
-    print("You are able to choose any US stock or ETF and the TradingBot will buy or sell that stock/ETF using the historical market dataset (From 1983 to 2019).\n")
+    print("You are able to choose any US stock or Exchange-Traded Fund (ETF) and the TradingBot will buy or sell that stock/ETF using the historical market dataset (From 1983 to 2019).\n")
     print("The bot will complete the simulation process 3 times using 3 different algorithms:")
     print(" - Moving Average Crossover Algorithm")
     print(" - Relative Strength Index (RSI) Algorithm")
@@ -18,7 +18,7 @@ def main():
         
         # Asks for input of Stock/ETF ticker symbol to test
         print("Here is a list of all US stocks: https://www.tradingview.com/markets/stocks-usa/market-movers-all-stocks/")
-        print ("Here is a list of all US ETFs: https://www.tradingview.com/etf-screener/\n")
+        print ("Here is a list of all US Exchange-Traded Funds (ETFs): https://www.tradingview.com/etf-screener/\n")
         ticker_symbol = input("Enter the ticker symbol of any US stock or ETF you want to test (e.g. aapl or AAPL for Apple). To exit, type 'exit': \n").strip().lower()
 
         # Exits program if user types 'exit'
