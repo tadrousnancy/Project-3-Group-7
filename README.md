@@ -19,7 +19,7 @@ Welcome to the **Trading Bot Simulator**. This is a python project which allows 
 - main.py: runs the user interface and simulator 
 - TradingBot.py: contains TradingBot class and strategy algorithms
 - PrepareData.py: handles data loading and plotting
-- huge_stock_market_dataset.csv: dataset 
+- historical_market_dataset folder: dataset 
 - README.md 
 
 
