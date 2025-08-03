@@ -5,6 +5,8 @@ Welcome to the **Trading Bot Simulator**. This is a python project which allows 
 ## Features
  
 - Test any U.S. stock or ETF using its ticker symbol (e.g. aapl or AAPL for Apple)
+     - List of all US stocks: https://www.tradingview.com/markets/stocks-usa/market-movers-all-stocks/
+     - List of all US Exchange-Traded Funds (ETFs): https://www.tradingview.com/etf-screener/
 - Simulate and compare three trading algorithms:
      1. **Moving Average Crossover Algorithm**
      2. **Relative Strength Index (RSI) Algorithm**
