@@ -93,7 +93,7 @@ def plot_trades(stock_df, bot_ma, bot_rsi, bot_bb, stock_to_test, starting_balan
 
 
     # Adds best algorithm at the bottom
-    plt.figtext(0.5, 0.02, f"Best Strategy: {best_algorithm} with a final balance of ${balances[best_algorithm]:,.2f}", 
+    plt.figtext(0.5, 0.02, f"Best Strategy: {best_algorithm} with a Final Balance of ${balances[best_algorithm]:,.2f}", 
     wrap = True, ha = 'center', fontsize=14, fontweight = 'bold')
 
     # Final formatting of plot
