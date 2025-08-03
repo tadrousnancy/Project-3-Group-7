@@ -95,7 +95,7 @@ def main():
         }
 
         best_algorithm = max(balances, key=balances.get)
-        print(f"Best Strategy: {best_algorithm} with a final balance of ${balances[best_algorithm]:.2f}")
+        print(f"Best Strategy: {best_algorithm} with a Final Balance of ${balances[best_algorithm]:.2f}")
 
         # Plots the trades that each algorithm made
         print("\nThe visualization of the data will be shown: Exit the plot to continue.\n")
@@ -105,4 +105,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
