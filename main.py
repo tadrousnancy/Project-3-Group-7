@@ -16,6 +16,8 @@ def main():
     while True:
         
         # Asks for input of Stock/ETF ticker symbol to test
+        print("Here is a list of all US stocks: https://www.tradingview.com/markets/stocks-usa/market-movers-all-stocks/")
+        print ("Here is a list of all US ETFs: https://www.tradingview.com/etf-screener/\n")
         ticker_symbol = input("Enter the ticker symbol of any US stock or ETF you want to test (e.g. aapl for Apple). To exit, type 'exit': \n").strip().lower()
 
         # Exits program if user types 'exit'
