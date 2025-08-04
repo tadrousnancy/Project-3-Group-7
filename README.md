@@ -27,8 +27,8 @@ Welcome to the **Trading Bot Simulator**. This is a python project that allows t
 
 ## Dataset Setup
 
-For this project, you’ll need pandas and matplotlib. 
-Pandas: pip install pandas
+For this project, you’ll need pandas and matplotlib.  
+Pandas: pip install pandas  
 Matplotlib: pip install matplotlib
 
 Once everything is set up, you can run main.py. 
