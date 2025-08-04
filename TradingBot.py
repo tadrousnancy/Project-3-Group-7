@@ -37,12 +37,6 @@ class TradingBot:
         if self.position > 0:
             self.sell(prices["Price"].iloc[-1], prices["Date"].iloc[-1])
 
-        '''
-        if moving_average_20 > moving_average_50:
-        self.buy(price)
-        elif moving_average_20 < moving_average_50 and self.position > 0:
-        self.sell(price)
-        '''
 
     def rsi_strategy(self, data):
         prices = pd.DataFrame(data, columns=["Date", "Price"])
@@ -65,13 +59,6 @@ class TradingBot:
         if self.position > 0:
             self.sell(prices["Price"].iloc[-1], prices["Date"].iloc[-1])
 
-        '''
-        if RSI < 30:
-            self.buy(price)
-
-        if RSI > 70 and self.position > 0:
-            self.sell(price)
-        '''
     
     def bollinger_bands_strategy(self, data):
         prices = pd.DataFrame(data, columns=["Date", "Price"])
@@ -99,3 +86,4 @@ class TradingBot:
         if self.position > 0:
             self.sell(prices["Price"].iloc[-1], prices["Date"].iloc[-1])
     
+
